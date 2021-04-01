@@ -11,7 +11,9 @@
   user-select: none;
   -webkit-touch-callout: none;
 }
-
+html {
+  background: #252627;
+}
 input[type="submit"],
 input[type="button"] {
   border-radius: 0;
@@ -219,6 +221,7 @@ header.sticky ul li a {
 #about .textBx p {
   color: #fff;
   letter-spacing: 1px;
+  line-height: 2rem;
 }
 #about .textBx img {
   filter: invert(1);
