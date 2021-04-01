@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="css/style.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Quicksand rel="stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>My Portfolio</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <a href="#top" class="logo">My Portfolio</a>
+      <div class="toggle" onClick="menuToggle()"></div>
+      <ul class="menu">
+        <li><a href="#top" onClick="menuToggle()">Home</a></li>
+        <li><a href="#about" onClick="menuToggle()">About Me</a></li>
+        <li><a href="#work" onClick="menuToggle()">Work</a></li>
+        <li><a href="#contact" onClick="menuToggle()">Contact</a></li>
+      </ul>
+    </header>
+    <main>
+      <section id="top">
+        <div class="textBx layer" data-speed="0.4">
+          <span class="animated">H</span>
+          <span class="animated">i</span>
+          <span class="animated">,</span>
+          <br>
+          <span class="animated">I</span>
+          <span class="animated">'</span>
+          <span class="animated">m</span>
+          <span class="m-left animated name">K</span>
+          <span class="animated name">a</span>
+          <span class="animated name">t</span>
+          <span class="animated name">s</span>
+          <span class="animated name">u</span>
+          <span class="animated name">y</span>
+          <span class="animated name">u</span>
+          <span class="animated name">k</span>
+          <span class="animated name">i</span>
+          <p>Nanzan University.</p>
+          <a href="#about" class="btn">About Me</a>
+        </div>
+        <div class="imgBx">
+          <img src="img/sue.jpg">
+        </div>
+      </section>
+      <section id="about">
+        <h2>About Me</h2>
+        <div class="content">
+          <div class="imgBx">
+            <img src="img/sue2.jpg">
+          </div>
+          <div class="textBx">
+            <h3>末永克幸</h3>
+            <p>南山大学（名古屋）の経営学部生。ゲームとサッカーを愛する22歳。<br>
+              4年の春、エンジニアという職業を知り、独学を始める。「かっこいいモノを作りたい」がモチベーション。<br>
+              現在は主にReact, Jest, TypeScriptを勉強中。<br>
+              資格：英検2級、TOEIC780、運転免許
+            </p>
+            <a href="https://github.com/moyongkexing" target="_blank" rel="noopener noreferrer"><img src="img/github.png" class="animated"></a>
+          </div>
+        </div>
+      </section>
+      <section id="work">
+        <h2>Work</h2>
+        <div class="card" ontouchstart=''>
+          <div class="card-content animated">
+            <h3>Home Study</h3>
+            <p>家で勉強する人たちのためのコミュニティサイト</p>
+            <a onClick="popupToggle1()">詳細</a>
+          </div>
+          <img src="img/homsta.png">
+        </div>
+        <div class="card" ontouchstart=''>
+          <div class="card-content animated">
+            <h3>このサイト</h3>
+            <p>自己紹介用ホームページ</p>
+            <a onClick="popupToggle2()">詳細</a>
+          </div>
+          <img src="img/portfolio.png">
+        </div>
+      </section>
+      <div id="popup1">
+        <h3>Home Study(2020.8)</h3>
+        <a href="https://homsta.herokuapp.com/" target="_blank" rel="noopener noreferrer">https://homsta.herokuapp.com/</a>
+        <p>■FrontEnd</p>
+        <p>HTML CSS jQuery Bootstrap</p>
+        <p>■BackEnd</p>
+        <p>Ruby Rails</p>
+        <p>■Other</p>
+        <p>PostgreSQL RSpec Heroku</p>
+        <button onClick="popupToggle1()">閉じる</button>
+      </div>
+      <div id="popup2">
+        <h3>このサイト(2020.12)</h3>
+        <p>■FrontEnd</p>
+        <p>HTML CSS Javascript ちょっとだけVue.js</p>
+        <button onClick="popupToggle2()">閉じる</button>
+      </div>
+      <section id="contact">
+        <div class="container">
+          <div class="reception messageBx">
+            <div class="photoBx">
+              <img src="img/keyboard1.jpg">
+            </div>
+            <div class="formBx">
+              <form action="https://api.staticforms.xyz/submit" method="post">
+                <h2>お問い合わせ</h2>
+                <input type="text" name="name" placeholder="氏名">
+                <input type="email" name="email" placeholder="メールアドレス">
+                <textarea placeholder="ご用件" name="message"></textarea>
+                <input type="hidden" name="accessKey" value="e6ffcc59-cdc9-4178-9b37-8a50382237c2">
+                <input type="hidden" name="subject" value="Contact from My Portfolio">
+                <input type="submit" value="送信">
+                <p class="ask-feedback">このウェブサイトの感想をいただけませんか？ <a onClick="formToggle()">はい</a></p>
+              </form>
+            </div>
+          </div>
+          <div class="reception feedbackBx">
+            <div class="formBx">
+              <form action="https://api.staticforms.xyz/submit" method="post">
+                <h2>ご感想</h2>
+                <textarea v-model="feedback" maxlength="140" placeholder="ご意見、ご感想など" name="message"></textarea>
+                <p class="remaining" v-bind:style="{color: computedColor}">残り {{ remaining }}文字</p>
+                <input type="hidden" name="accessKey" value="e6ffcc59-cdc9-4178-9b37-8a50382237c2">
+                <input type="hidden" name="subject" value="Feedback from My Portfolio">
+                <input type="submit" value="送信">
+                <p class="ask-contact">お問い合わせは<a onClick="formToggle()">こちら</a></p>
+              </form>
+            </div>
+            <div class="photoBx">
+              <img src="img/keyboard2.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="copyright">
+        <p>Copyright 🄫 2020 Katsuyuki Suenaga.</p>
+      </div>
+    </main>
+  </div>
+  <script type="text/javascript">
+    if(!navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)){
+      window.addEventListener('scroll', function() {
+      var header = document.querySelector('header');
+      header.classList.toggle('sticky', window.scrollY > 0);
+    });
+    }
+    function menuToggle() {
+      var menuToggle = document.querySelector('.toggle');
+      var menu = document.querySelector('.menu');
+      menuToggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    }
+    if(!navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)){
+      document.addEventListener("mousemove" , parallax);
+      function parallax(e) {
+        this.querySelectorAll('.layer').forEach(layer => {
+          const speed = layer.getAttribute('data-speed')
+          const x = (window.innerWidth - e.pageX*speed)/100
+          const y = (window.innerHeight - e.pageY*speed)/100
+          layer.style.transform = `translateX(${x}px) translateY(${y}px)`
+        })
+      }
+    }
+    function popupToggle1() {
+      var popup1 = document.getElementById('popup1');
+      popup1.classList.toggle('active');
+      var work = document.getElementById('work');
+      work.classList.toggle('active');
+    }
+    function popupToggle2() {
+      var popup2 = document.getElementById('popup2');
+      popup2.classList.toggle('active');
+      var work = document.getElementById('work');
+      work.classList.toggle('active');
+    }
+    function formToggle() {
+      var container = document.querySelector('.container');
+      var contact = document.getElementById('contact');
+      var copyright = document.querySelector('.copyright');
+      container.classList.toggle('active'); 
+      contact.classList.toggle('active');
+      copyright.classList.toggle('active');
+    }
+  </script>
+  <script>
+    new Vue({
+      el: '#contact',
+      data: {
+        feedback: ''
+      },
+      computed: {
+        remaining: function() {
+          return 140 - this.feedback.length;
+        },
+        computedColor: function() {
+          color = 'green';
+          if (this.remaining < 20) {
+            color = 'orange';
+          }
+          if (this.remaining < 1) {
+            color = 'red';
+          }
+          return color;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
